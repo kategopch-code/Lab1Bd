@@ -59,7 +59,6 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 ## Результати
 
 - `output/freq_dict.db` — база даних
-- `ЗВІТ.md` — звіт із висновками
 - `output/report.md` — автоматично згенеровані таблиці
 - `output/csv/` — таблиці для Excel
 
