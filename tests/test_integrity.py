@@ -41,12 +41,12 @@ class DatabaseIntegrityTest(unittest.TestCase):
 
     def test_frequency_tables_keep_all_repeats(self) -> None:
         expected = SAMPLE_SIZE * len(TEXT_SOURCES)
-        for table in ("freq_wordforms", "freq_lemmas", "freq_pos"):
+        for table in ("freq_forms", "freq_wordforms", "freq_lemmas", "freq_pos"):
             with self.subTest(table=table):
                 self.assertEqual(self.scalar(f"SELECT SUM(abs_freq) FROM {table}"), expected)
 
     def test_parts_sum_to_absolute_frequency(self) -> None:
-        for table in ("freq_wordforms", "freq_lemmas", "freq_pos"):
+        for table in ("freq_forms", "freq_wordforms", "freq_lemmas", "freq_pos"):
             with self.subTest(table=table):
                 mismatches = self.scalar(f"SELECT COUNT(*) FROM {table} WHERE abs_freq <> {PART_SUM}")
                 self.assertEqual(mismatches, 0)

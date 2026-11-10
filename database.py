@@ -116,6 +116,21 @@ class DatabaseBuilder:
             GROUP BY text_id, pos, lemma, word
             ORDER BY text_id, COUNT(*) DESC, word;
 
+            CREATE TABLE freq_forms (
+                id INTEGER PRIMARY KEY,
+                text_id INTEGER NOT NULL REFERENCES texts (id),
+                wordform TEXT NOT NULL,
+                abs_freq INTEGER NOT NULL,
+                {PART_DEFINITIONS},
+                UNIQUE (text_id, wordform)
+            );
+
+            INSERT INTO freq_forms (text_id, wordform, abs_freq, {PART_COLUMNS})
+            SELECT text_id, wordform, SUM(abs_freq), {PART_SUMS}
+            FROM freq_wordforms
+            GROUP BY text_id, wordform
+            ORDER BY text_id, SUM(abs_freq) DESC, wordform;
+
             CREATE TABLE freq_lemmas (
                 id INTEGER PRIMARY KEY,
                 text_id INTEGER NOT NULL REFERENCES texts (id),

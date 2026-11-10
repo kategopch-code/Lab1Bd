@@ -42,7 +42,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | --- | --- |
 | `texts`, `sentences`, `words`, `pos` | структура тексту; кожне слововживання є окремим рядком, тому повтори збережені |
 | `tokens` | представлення для зручних запитів |
-| `freq_wordforms` | частотний словник: частина мови, лема, словоформа, `abs_freq`, `part_1`…`part_20` |
+| `freq_forms` | частотний словник словоформ (варіант 1 методички): словоформа, `abs_freq`, `part_1`…`part_20` |
+| `freq_wordforms` | частотний словник із лематизацією (варіант 2): частина мови, лема, словоформа, `abs_freq`, `part_1`…`part_20` |
 | `freq_lemmas` | частотний словник лем |
 | `freq_pos` | частотний словник частин мови |
 | `tfidf` | TF-IDF за формулою в SQL і значення scikit-learn |
@@ -58,7 +59,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 ## Результати
 
 - `output/freq_dict.db` — база даних
-- `output/report.md` — звіт
+- `ЗВІТ.md` — звіт із висновками
+- `output/report.md` — автоматично згенеровані таблиці
 - `output/csv/` — таблиці для Excel
 
 ## Обробка

@@ -277,6 +277,10 @@ REPORTS = (
 )
 
 FULL_TABLE_EXPORTS = {
+    "freq_forms": f"""
+        SELECT id, text_id, wordform, abs_freq, {PART_COLUMNS}
+        FROM freq_forms ORDER BY id
+    """,
     "freq_wordforms": f"""
         SELECT id, text_id, pos, lemma, wordform, abs_freq, {PART_COLUMNS}
         FROM freq_wordforms ORDER BY id
